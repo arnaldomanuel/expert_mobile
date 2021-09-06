@@ -9,10 +9,12 @@ import { boot } from 'quasar/wrappers'
 // for each client)
 
 let settingsFiles;
-console.log('env ',process.env)
+
 if(process.env.DEBUGGING || process.env.DEV){
+  console.log('im env')
    settingsFiles = require('./env_development')
 } else {
+  console.log('im prod')
    settingsFiles = require('./env_prod')
 }
 const settings = settingsFiles.default.settings
