@@ -9,7 +9,7 @@
         </q-avatar>
       </q-item-section>
 
-      <q-item-section>Image rounded avatar</q-item-section>
+      <q-item-section>Ir para o teste</q-item-section>
       <q-item-section thumbnail class="q-mr-md"><q-icon class="q-mr-md" name="done"/> </q-item-section>
     </q-item>
     <q-separator />
@@ -20,9 +20,10 @@
 <script>
 export default {
 name: "QuizModules",
+  props:["module"],
   methods:{
     goTo(){
-      this.$router.push('/Quiz/3')
+      this.$router.push('/Quiz/'+this.module.id)
     }
   }
 }

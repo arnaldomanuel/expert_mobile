@@ -1,34 +1,25 @@
 <template>
   <div class="q-mt-md">
     <q-list bordered>
-    <q-item clickable v-ripple>
-      <q-item-section>Icon as avatar</q-item-section>
-      <q-item-section avatar>
-        <q-icon color="primary" name="done" />
-      </q-item-section>
-    </q-item>
-    <q-separator />
-      <q-item clickable v-ripple>
-        <q-item-section>Icon as avatar</q-item-section>
-        <q-item-section avatar>
-          <q-icon color="primary" name="done" />
-        </q-item-section>
-      </q-item>
-      <q-separator />
-      <q-item clickable v-ripple>
-        <q-item-section>Icon as avatar</q-item-section>
-        <q-item-section avatar>
-          <q-icon color="primary" name="done" />
-        </q-item-section>
-      </q-item>
-      <q-separator />
+      <template v-for="objecive in objectives" v-bind:key="objecive.id">
+        <q-item clickable v-ripple>
+          <q-item-section>{{objecive.description}}</q-item-section>
+          <q-item-section avatar>
+            <q-icon color="primary" name="done" />
+          </q-item-section>
+        </q-item>
+        <q-separator />
+      </template>
     </q-list>
+    <div v-if="objectives.length<=0" class="text-center tex-h5 text-weight-bold">0 objectivos</div>
+
   </div>
 </template>
 
 <script>
 export default {
-name: "ObjectiveCourseTab"
+name: "ObjectiveCourseTab",
+  props:["course", "objectives"]
 }
 </script>
 

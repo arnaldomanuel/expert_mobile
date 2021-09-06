@@ -1,5 +1,5 @@
 const settings= {
-  API_ULR: "http://localhost/",
+  API_URL: "http://localhost:8000/",
 
 }
 export default {

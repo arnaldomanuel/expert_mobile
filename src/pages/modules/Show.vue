@@ -2,16 +2,16 @@
   <div class="row">
     <div class="col-12">
       <q-img
-        src="https://placeimg.com/500/300/nature"
+        :src="getModuleThumbnailPath"
         :ratio="16/9">
         <div class="absolute-bottom text-subtitle1 text-center">
-          Nome do curso
+              {{course.name}}
         </div>
       </q-img>
     </div>
     <div class="col-12">
       <h4 class="text-overline q-pt-md text-uppercase q-ma-sm">Módulo</h4>
-      <h1 class="text-h5 q-ma-sm  q-pb-md">Hello World</h1>
+      <h1 class="text-h5 q-ma-sm  q-pb-md">{{module.name}}</h1>
     </div>
     <div class="col-12">
       <q-tabs
@@ -24,16 +24,16 @@
       </q-tabs>
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel class="q-pa-none" name="lessons">
-          <lessons-module/>
+          <lessons-module :lessons="lessons"/>
 
         </q-tab-panel>
 
         <q-tab-panel class="q-pa-none" name="info">
-          <info-module/>
+          <info-module :module="module"/>
         </q-tab-panel>
 
         <q-tab-panel class="q-pa-none" name="objectives">
-          <quiz-modules/>
+          <quiz-modules :module="module"/>
         </q-tab-panel>
       </q-tab-panels>
     </div>
@@ -48,9 +48,29 @@ export default {
 name: "Show",
   components:{InfoModule,LessonsModule, QuizModules},
   data(){
-  return {
-    tab:"info"
-  }
+    return {
+        tab:"info",
+        module:{name:"",id:""},
+        lessons:[],
+        course:{name:"", id:""},
+      }
+  },
+  computed:{
+    getModuleThumbnailPath(){
+      return this.$settings.API_URL+this.module.photo_path
+    }
+  },
+  methods:{
+    getModule(){
+      this.$axios.get('/api/module/'+this.$route.params.id).then(data=>{
+        this.module=data.data.module
+        this.lessons=data.data.lessons
+        this.course=data.data.course
+      })
+    }
+  },
+  mounted() {
+  this.getModule()
   }
 }
 </script>

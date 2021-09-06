@@ -4,12 +4,12 @@
 
       <q-header class="bg-white" reveal elevated>
         <q-toolbar class="q-pa-none">
-          <q-input style="width: 100%" filled class="bg-white" v-model="text" label="Pesquisa">
+          <q-input style="width: 100%" filled class="bg-white" v-model="search" label="Pesquisa">
             <template v-slot:prepend>
               <q-icon @click="goBack()" class="cursor" name="arrow_back" />
             </template>
             <template v-slot:append>
-              <q-icon name="close" @click="text = ''" class="cursor-pointer" />
+              <q-icon name="close" @click="search = ''" class="cursor-pointer" />
             </template>
           </q-input>
         </q-toolbar>
@@ -17,9 +17,7 @@
 
 
       <q-page-container >
-        <q-page padding>
-          <router-view/>
-        </q-page>
+          <search-results :searchString="search"/>
       </q-page-container>
 
     </q-layout>
@@ -27,8 +25,10 @@
 </template>
 
 <script>
+import SearchResults from "pages/courses/SearchResults";
 export default {
 name: "SearchLayout",
+  components:{SearchResults},
   data(){
   return {
     search:""

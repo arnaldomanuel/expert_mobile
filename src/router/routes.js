@@ -1,6 +1,13 @@
 
 const routes = [
   {
+    path: '/pagina-central',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Index.vue') }
+    ]
+  },
+  {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -50,8 +57,13 @@ const routes = [
   {
     path: '/pesquisar',
     component: () => import('layouts/SearchLayout.vue'),
+
+  },
+  {
+    path: '/pagar/curso',
+    component: () => import('layouts/BackTopLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/courses/SearchResults.vue') },
+      { path: ':id', component: () => import('pages/pay/RequestAccess.vue') },
 
     ]
   },

@@ -53,26 +53,14 @@
         </q-carousel-slide>
       </q-carousel>
     </div>
-
-   <div class=" q-mt-md  q-mb-md text-h6">Cursos (6)</div>
-    <div class="row">
-      <q-card to="curso/2" clickable class="cursor-pointer my-card">
-
-        <img src="https://cdn.quasar.dev/img/mountains.jpg">
-
-        <q-card-section>
-          <div  to="curso/2" class="text-h6">Our Changing Planet</div>
-          <div class="text-subtitle2">by John Doe</div>
-        </q-card-section>
-      </q-card>
-    </div>
-
+    <all-courses-component/>
   </q-page>
 </template>
 
 <script>
-
+import AllCoursesComponent from "components/AllCoursesComponent";
 export default {
+  components:{AllCoursesComponent},
   data(){
     return {
       slide:"tv",
@@ -81,7 +69,9 @@ export default {
     }
   },
   methods:{
-
+    goToCourse(){
+      this.$router.push("/curso/2")
+    },
   },
   mounted() {
     console.log('live',this.$settings)

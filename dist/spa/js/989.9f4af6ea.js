@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunkexpert"]=self["webpackChunkexpert"]||[]).push([[989],{4989:(e,a,t)=>{t.r(a),t.d(a,{default:()=>c});var d=t(3673);const s=(0,d.HX)("data-v-1a8a9f56"),n=s(((e,a,t,s,n,r)=>((0,d.wg)(),(0,d.j4)("div")))),r={name:"Index"};r.render=n,r.__scopeId="data-v-1a8a9f56";const c=r}}]);

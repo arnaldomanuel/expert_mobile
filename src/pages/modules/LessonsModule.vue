@@ -1,42 +1,27 @@
 <template>
   <q-list class="q-mt-md">
-    <q-item clickable>
-      <q-item-section>
-        <q-item-label>Single line item</q-item-label>
-        <q-item-label caption>Secondary line text. Lorem ipsum dolor sit amet, consectetur adipiscit elit.</q-item-label>
-      </q-item-section>
+    <template v-for="lesson in lessons" v-bind:key="lesson.id">
+      <q-item clickable>
+        <q-item-section>
+          <q-item-label>{{lesson.name}}</q-item-label>
+          <q-item-label v-html="lesson.description" caption></q-item-label>
+        </q-item-section>
 
-      <q-item-section side top>
-        <q-badge color="teal" label="10k" />
-      </q-item-section>
-    </q-item>
-    <q-separator />
-    <q-item clickable >
-    <q-item-section>
-      <q-item-label>Single line item</q-item-label>
-      <q-item-label caption>Secondary line text. Lorem ipsum dolor sit amet, consectetur adipiscit elit.</q-item-label>
-    </q-item-section>
-      <q-item-section avatar side top>
-      <q-icon color="primary" name="play_lessons" />
-    </q-item-section>
-  </q-item>
-    <q-separator  />
-    <q-item>
-    <q-item-section>
-      <q-item-label>Single line item</q-item-label>
-      <q-item-label caption>Secondary line text. Lorem ipsum dolor sit amet, consectetur adipiscit elit.</q-item-label>
-    </q-item-section>
+        <q-item-section side top>
+          <q-badge color="teal" label="1" />
+        </q-item-section>
+      </q-item>
+      <q-separator />
+    </template>
 
-    <q-item-section side top>
-      <q-badge color="teal" label="10k" />
-    </q-item-section>
-  </q-item>
+
   </q-list>
 </template>
 
 <script>
 export default {
-name: "LessonsModule"
+name: "LessonsModule",
+  props:["lessons"]
 }
 </script>
 

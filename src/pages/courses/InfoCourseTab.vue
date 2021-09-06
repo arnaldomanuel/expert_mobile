@@ -1,13 +1,13 @@
 <template>
-  <div class="q-mt-md">
-    <div class="text-h6">Mails</div>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  <div v-html="course.description" class="q-mt-md">
+
   </div>
 </template>
 
 <script>
 export default {
-name: "InfoCoureTab"
+name: "InfoCoureTab",
+  props:["course"]
 }
 </script>
 

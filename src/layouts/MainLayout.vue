@@ -6,11 +6,11 @@
         <q-btn flat round @click="drawer = !drawer" dense icon="menu" class="q-mr-sm"/>
 
 
-        <q-toolbar-title>Expert</q-toolbar-title>
+        <q-toolbar-title clickable @click="goToHome()">Expert</q-toolbar-title>
 
         <q-space />
         <q-btn flat round dense icon="search" @click="search()" class="q-mr-xs" />
-        <q-btn flat round dense icon="more_vert" />
+      <!--  <q-btn flat round dense icon="more_vert" />-->
       </q-toolbar>
     </q-header>
 
@@ -22,6 +22,15 @@
     >
       <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
         <q-list padding>
+          <q-item to="/pagina-central" clickable v-ripple>
+            <q-item-section avatar>
+              <q-icon name="home"/>
+            </q-item-section>
+
+            <q-item-section>
+              Página Inicial
+            </q-item-section>
+          </q-item>
           <q-item to="/cursos" clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="school"/>
@@ -97,7 +106,7 @@ export default {
 
   data() {
     return {
-      drawer: true,
+      drawer: false,
       miniState: true,
       confirm: false,
     }
@@ -105,6 +114,9 @@ export default {
   methods:{
     logout() {
       // this.$store.dispatch("auth/logout");
+    },
+    goToHome(){
+      this.$router.push('/pagina-central')
     },
     search(){
       this.$router.push('/pesquisar')
