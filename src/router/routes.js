@@ -51,7 +51,7 @@ const routes = [
     path: '/quiz',
     component: () => import('layouts/ScoreLayout.vue'),
     children: [
-      { path: ':id/resultado', component: () => import('pages/Quiz/Score.vue') },
+      { path: ':id/resultado/:score/:total', component: () => import('pages/Quiz/Score.vue') },
     ]
   },
   {
@@ -65,6 +65,41 @@ const routes = [
     children: [
       { path: ':id', component: () => import('pages/pay/RequestAccess.vue') },
 
+    ]
+  },
+  {
+    path: '/entrar',
+    name: 'Login',
+    component: () => import('layouts/AuthenticationLayout.vue'),
+    children: [
+
+      { path: '',name: 'Login', component: () => import('pages/Authentication/Login.vue') }
+    ]
+  },
+  {
+    path: '/pdf',
+    component: () => import('pages/pdf/Show.vue'),
+  },
+  {
+    path: '/aula',
+    component: () => import('layouts/LessonsLayout'),
+    children: [
+      { path: ':id', component: () => import('pages/lessons/Show.vue') },
+
+    ]
+  },
+  {
+    path: '/meus-cursos',
+    component: () => import('layouts/MainLayout'),
+    children: [
+      { path: '', component: () => import('pages/Profile/MyCourses') },
+    ]
+  },
+  {
+    path: '/meus-quizzes',
+    component: () => import('layouts/MainLayout'),
+    children: [
+      { path: '', component: () => import('pages/Quiz/MyQuizzes') },
     ]
   },
 

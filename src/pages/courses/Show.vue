@@ -14,7 +14,7 @@
       <h1 class="text-h5 q-ma-sm  q-pb-md"> {{course.name}}</h1>
     </div>
     <div class="col-12 q-pb-md">
-      <q-btn label="Requisitar Acesso" @click="goToPaymentPage()" class="bg-secondary text-white q-mr-md" icon-right="lock"/>
+      <q-btn v-if="showAccessButton" :label="accessCourse" @click="goToPaymentPage()" class="bg-secondary text-white q-mr-md" icon-right="lock"/>
       <q-btn label="Ver mais" @click="seeDetails()" class="bg-white text-primary" dense/>
     </div>
     <div class="col-12">
@@ -47,6 +47,7 @@
 import InfoCourseTab from "pages/courses/InfoCourseTab";
 import AuthorCourseTab from "pages/courses/AuthorCourseTab";
 import ObjectiveCourseTab from "pages/courses/ObjectiveCourseTab";
+import Error from "src/Services/Error";
 export default {
   name: "Show",
   components:{InfoCourseTab, AuthorCourseTab, ObjectiveCourseTab},
@@ -55,6 +56,9 @@ export default {
       tab:'info',
       course:{name:''},
       objectives:[],
+      accessCourse:'',
+      blockPaymentPage:false,
+      showAccessButton: true,
     }
   },
   methods: {
@@ -63,7 +67,10 @@ export default {
       this.$router.push('/curso/detalhes/'+this.$route.params.id)
     },
     goToPaymentPage(){
-      this.$router.push('/pagar/curso/'+this.$route.params.id)
+      if(!this.blockPaymentPage)
+        this.$router.push('/pagar/curso/'+this.$route.params.id)
+      else
+        Error.openNotify('Aguarde enquanto a sua requisição é processada', 5000)
     }
   },
   computed:{
@@ -75,6 +82,21 @@ export default {
     this.$axios.get('/api/course/'+this.$route.params.id).then(data=>{
       this.course=data.data.course
       this.objectives=data.data.objectives
+      let courseGrant = data.data.courseGrant
+      let courseGrantStatus = data.data.courseGrantStatus
+
+      if (courseGrant==null ||courseGrant==undefined){
+        this.accessCourse='Requisitar acesso'
+      } else if ( courseGrant.authorize==courseGrantStatus.REPROVED ){
+        this.accessCourse='Requisitar acesso'
+      } else if (courseGrant.authorize==courseGrantStatus.UNPROCESSED){
+        this.blockPaymentPage=true
+        this.accessCourse='Requisição feita'
+      }else if (courseGrant.authorize==courseGrantStatus.APPROVED){
+        this.accessCourse='Requisição feita'
+        this.showAccessButton=false
+      }
+
       console.log(data)
     })
     console.log('id',this.$route.params.id)

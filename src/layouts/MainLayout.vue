@@ -4,8 +4,6 @@
     <q-header reveal elevated>
       <q-toolbar>
         <q-btn flat round @click="drawer = !drawer" dense icon="menu" class="q-mr-sm"/>
-
-
         <q-toolbar-title clickable @click="goToHome()">Expert</q-toolbar-title>
 
         <q-space />
@@ -31,15 +29,7 @@
               Página Inicial
             </q-item-section>
           </q-item>
-          <q-item to="/cursos" clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="school"/>
-            </q-item-section>
 
-            <q-item-section>
-              Cursos
-            </q-item-section>
-          </q-item>
           <q-item to="/meus-cursos" clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="grade"/>
@@ -49,7 +39,7 @@
               Os meus cursos
             </q-item-section>
           </q-item>
-          <q-item to="/cursos" clickable v-ripple>
+          <q-item to="/meus-quizzes" clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="quiz"/>
             </q-item-section>
@@ -99,11 +89,11 @@
 </template>
 
 <script>
-
+import ConfirmLogoutDialog from "../dialogs/ConfirmLogoutDialog.vue";
 
 export default {
   name: 'MainLayout',
-
+  components: {ConfirmLogoutDialog},
   data() {
     return {
       drawer: false,
@@ -124,9 +114,12 @@ export default {
   },
   computed: {
     user ()  {
-      return {name:'arnaldo', email:'as@gmail.com'};
+      return this.$store.getters["expert/authUser"];
     }
   },
+  mounted() {
+    this.$store.dispatch('expert/getAuthUser')
+  }
 
 
 }

@@ -6,19 +6,40 @@
              :rules="[ val => val.length <= 9 || 'Número Vodacom inválido']"
     />
 
-    <q-btn class="text-white bg-primary" label="Efectuar Pagamento"/>
+    <q-btn class="text-white bg-primary" @click="pay" label="Efectuar Pagamento"/>
   </div>
 </template>
 
 <script>
+import Error from "src/Services/Error";
+import Loading from "src/Services/Loading";
+
 export default {
 name: "MpesaPayment",
+  props:["course"],
   data(){
     return {
       phone:"",
       text:""
     }
   },
+  methods:{
+    pay(){
+      Error.openPrrocessing()
+      this.$axios.post('/api/pay/mpesa',{
+        course_id:this.course.id,
+        amount:this.course.price,
+        phone_number: this.phone
+      }).then(data=>{
+        Loading.openSuccess('Pagamento efectuado com sucesso', 5000);
+        Error.closeprocessing()
+      }).catch(error=>{
+        console.log(error.response.data)
+        Error.closeprocessing()
+        Error.openNotify(error.response.data, 5000)
+      })
+    }
+  }
 
 
 }

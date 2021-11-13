@@ -9,7 +9,7 @@ import settings from "boot/./settingsFile";
 // "export default () => {}" function below (which runs individually
 // for each client)
 
-let api = axios.create({ baseURL: settings.settings.API_URL})
+let api = axios.create({ baseURL: settings.settings.API_URL,  withCredentials: true,})
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api

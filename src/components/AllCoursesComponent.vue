@@ -1,5 +1,5 @@
 <template>
-  <div class=" q-mt-md  q-mb-md text-h6">Cursos (6)</div>
+  <div class=" q-mt-md  q-mb-md text-h6">Cursos ({{courses.length}})</div>
   <div class="row">
     <template v-for="course in courses" v-bind:key="course.id">
       <course-component :course="course" />

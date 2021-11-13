@@ -13,7 +13,7 @@
 
     <div class="q-mt-md">
       <visa-payment v-if="visaSelected" />
-      <mpesa-payment v-if="!visaSelected" />
+      <mpesa-payment :course="course" v-if="!visaSelected" />
     </div>
   </div>
 </template>
@@ -37,8 +37,10 @@ export default {
     getCourseDetail(){
       this.$axios.get('api/get/course/'+this.$route.params.id).then(data=>{
         this.course=data.data;
+
         console.log(data)
       })
+
     }
   },
   mounted() {

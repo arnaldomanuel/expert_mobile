@@ -1,12 +1,12 @@
 <template>
   <q-page >
 
-      <div class="">
+      <div v-if="lastViewedCourse.id!=0" class="">
         <q-card class="my-card">
           <q-card-section>
-            <div class="text-h6">Nome de um curso qualquer</div>
+            <div class="text-h6">{{lastViewedCourse.name}}</div>
             <q-btn flat rounded>
-              <div class="q-mt-sm text-secondary text-subtitle2"> <q-icon name="fiber_manual_record"/> Continuar</div>
+              <div @click="$router.push('/curso/'+lastViewedCourse.id)" class="q-mt-sm text-secondary text-subtitle2"> <q-icon name="fiber_manual_record"/> Continuar</div>
             </q-btn>
           </q-card-section>
         </q-card>
@@ -64,8 +64,8 @@ export default {
   data(){
     return {
       slide:"tv",
+      lastViewedCourse:{id:0, name:''},
       lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'
-
     }
   },
   methods:{
@@ -75,6 +75,11 @@ export default {
   },
   mounted() {
     console.log('live',this.$settings)
-  }
+    this.$axios.get('/api/last-viewed-course').then(data=>{
+      this.lastViewedCourse=data.data.lastViewedCourse
+      console.log(this.lastViewedCourse)
+    })
+  },
+
 }
 </script>

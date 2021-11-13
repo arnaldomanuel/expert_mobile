@@ -1,5 +1,6 @@
 import { store } from 'quasar/wrappers'
 import { createStore } from 'vuex'
+import expert from './expert'
 
 // import example from './module-example'
 
@@ -15,13 +16,20 @@ import { createStore } from 'vuex'
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
-      // example
+      // examplemozfretes
+      expert
+
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only
     strict: process.env.DEBUGGING
   })
-
+  if (process.env.DEV && module.hot) {
+    module.hot.accept(['./expert'], () => {
+      const newShowcase = require('./expert').default
+      Store.hotUpdate({ modules: { expert: expert } })
+    })
+  }
   return Store
 })

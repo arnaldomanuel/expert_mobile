@@ -43,7 +43,9 @@ export default {
       return {name:'arnaldo', email:'as@gmail.com'};
     }
   },
-
+  mounted() {
+    this.$store.dispatch('expert/getAuthUser')
+  }
 
 }
 </script>

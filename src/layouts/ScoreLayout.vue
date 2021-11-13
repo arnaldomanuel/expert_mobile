@@ -22,8 +22,11 @@ export default {
 name: "ScoreLayout",
   methods:{
     goBack() {
-
+      this.$router.push('/modulo/'+this.$route.params.id)
     }
+  },
+  mounted() {
+    this.$store.dispatch('expert/getAuthUser')
   }
 }
 </script>
