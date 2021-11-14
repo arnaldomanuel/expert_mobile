@@ -3,7 +3,7 @@
     <q-card>
       <q-tab-panels :style="height" v-model="tab" animated>
         <q-tab-panel name="PDF">
-          <lesson-p-d-f></lesson-p-d-f>
+          <lesson-p-d-f :lesson="lesson"></lesson-p-d-f>
         </q-tab-panel>
 
         <q-tab-panel name="video">
