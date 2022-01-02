@@ -26,6 +26,7 @@ name: "MpesaPayment",
   methods:{
     pay(){
       Error.openPrrocessing()
+      this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
       this.$axios.post('/api/pay/mpesa',{
         course_id:this.course.id,
         amount:this.course.price,

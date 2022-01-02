@@ -17,6 +17,8 @@
       <q-btn v-if="showAccessButton" :label="accessCourse" @click="goToPaymentPage()" class="bg-secondary text-white q-mr-md" icon-right="lock"/>
       <q-btn label="Ver mais" @click="seeDetails()" class="bg-white text-primary" dense/>
     </div>
+
+    <div v-if="courseGrant.token!=''" class="bi-text-paragraph">Senha de requisição: <span class="text-bold">{{courseGrant.token}}</span></div>
     <div class="col-12">
       <q-tabs
         v-model="tab"
@@ -40,6 +42,9 @@
         </q-tab-panel>
       </q-tab-panels>
     </div>
+    <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-btn type="a" :href="'https://wa.me/'+course.whatsapp_number" fab icon="whatsapp" color="accent" />
+    </q-page-sticky>
   </div>
 </template>
 
@@ -57,6 +62,7 @@ export default {
       course:{name:''},
       objectives:[],
       accessCourse:'',
+      courseGrant:{token:""},
       blockPaymentPage:false,
       showAccessButton: true,
     }
@@ -91,8 +97,10 @@ export default {
         this.accessCourse='Requisitar acesso'
       } else if (courseGrant.authorize==courseGrantStatus.UNPROCESSED){
         this.blockPaymentPage=true
+        this.courseGrant=courseGrant
         this.accessCourse='Requisição feita'
       }else if (courseGrant.authorize==courseGrantStatus.APPROVED){
+        this.courseGrant=courseGrant
         this.accessCourse='Requisição feita'
         this.showAccessButton=false
       }

@@ -4,15 +4,12 @@ import AuthService from "src/Services/AuthServices";
 
 export default {
   logout({ commit, dispatch }) {
-    return AuthService.logout()
-      .then(() => {
         commit("SET_USER", null);
-        dispatch("setGuest", { value: "isGuest" });
-        if (router.currentRoute.name !== "login")
-          router.push({ path: "/login" });
-      })
-      .catch((error) => {
-      });
+        commit("setAPIToken", null);
+        dispatch("setToken", null);
+        console.log('going null', router.currentRoute)
+
+
   },
   async getAuthUser({ commit }) {
     commit("SET_LOADING", true);
@@ -25,6 +22,16 @@ export default {
     } catch (error) {
       commit("SET_LOADING", false);
       commit("SET_USER", null);
+    }
+  },
+  setToken(context,  value ){
+
+    if (value==null){
+      window.localStorage.removeItem('token')
+    } else {
+      console.log('value1 ', value.data.api_token)
+      window.localStorage.setItem('token', value.data.api_token)
+      context.commit("SET_USER", value.data);
     }
   },
   setGuest(context, { value }) {

@@ -26,6 +26,7 @@ name: "CoursesApproved",
   }
   },
   mounted() {
+    this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
      this.$axios.get('/api/my-courses').then(data=>{
          this.courses=data.data.courses
         console.log(  this.coursesStudent)

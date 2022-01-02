@@ -77,6 +77,8 @@
     <q-page-container >
       <q-page padding>
         <router-view/>
+
+
       </q-page>
     </q-page-container>
     <template>
@@ -90,6 +92,7 @@
 
 <script>
 import ConfirmLogoutDialog from "../dialogs/ConfirmLogoutDialog.vue";
+import {authClient} from "src/Services/AuthServices";
 
 export default {
   name: 'MainLayout',
@@ -118,6 +121,7 @@ export default {
     }
   },
   mounted() {
+    this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
     this.$store.dispatch('expert/getAuthUser')
   }
 

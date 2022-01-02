@@ -6,6 +6,7 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
+    <icon density="mdpi" height="36" platform="android" src="res/android/icon.png" width="72" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

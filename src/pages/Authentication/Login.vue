@@ -3,12 +3,12 @@
     <div class="flex flex-center">
      <img
         alt="Quasar logo"
-        src="~assets/img/logo.jpg"
-        style="width: 150px; height: 150px; margin: 0 auto"
+        src="~assets/img/logo.png"
+        style="width: 200px; margin: 0 auto"
       />
     </div>
     <div class="text-h5 q-mt-md text-center primary-color-text">
-      Insira seu email e senha
+      Insira seu email
     </div>
     <div>
       <div>
@@ -36,17 +36,19 @@
                             :rules="[ val => val && val.length > 0 || 'Digite seu email']"
                           />
 
-                          <q-input
+                      <!--    <q-input
                             filled
-                            type="Código"
+                            type="number"
                             v-model="user.password"
-                            label="Senha *"
+                            label="Código *"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Digite seu código Expeert']"
-                          />
+                          />-->
 
                           <div>
                             <q-btn label="Login" type="submit" color="primary"/>
+
+
                           </div>
                         </q-form>
 
@@ -78,24 +80,36 @@ export default {
       user: {
         email: "",
 
-        password: "",
+        password: "password",
       },
       messageFromSerer: "",
       denseOpts: false,
     };
   },
   methods: {
+    teste(){
+      this.$axios.get('/api/user').then(data=>{
+        console.log('data ', data)
+      }).error(error=>{
+        console.log(error)
+      })
+    },
     onSubmit() {
 
       if (this.$refs.myForm !== null && this.$refs.myForm !== undefined) {
         this.$refs.myForm.validate().then(success => {
           if (success) {
-               Error.openPrrocessing()
-               AuthService.login(this.user).then(success=>{
-               this.$store.dispatch("expert/getAuthUser");
-               Loading.openSuccess("Autenticação feita com sucesso")
-               Error.closeprocessing()
-               this.$router.push("/");
+                 AuthService.login(this.user).then(success=>{
+                   console.log('login ', success)
+
+                   this.$store.dispatch("expert/setToken", success)
+
+                   this.$store.dispatch("expert/getAuthUser").then(data=>{
+                       Loading.openSuccess("Autenticação feita com sucesso")
+                       // Error.closeprocessing()
+                       this.$router.push("/pagina-central")
+                       console.log('gggggggg')
+                   });
              }).catch(erro => {
                console.log(erro)
                Error.closeprocessing()
@@ -103,12 +117,19 @@ export default {
              });
           }
         })
-        Error.closeprocessing()
+
       }
 
     },
   },
-  computed: {},
+  computed: {
+    userAuth(){
+      return this.$store.getters["expert/authUser"]
+    },
+    token (){
+      return this.$store.getters["expert/token"]
+    }
+  },
   mounted() {
 
   }

@@ -21,6 +21,9 @@ const authUser=  (state) => {
   if (storageItem === "isGuest") return true;
   if (storageItem === "isNotGuest") return false;
 }
+ const token = () =>{
+  return  window.localStorage.getItem('token')
+}
 export default {
-  authUser,isAdmin,loggedIn,guest, loading, error
+  authUser,isAdmin,loggedIn,guest, loading, error, token
 }

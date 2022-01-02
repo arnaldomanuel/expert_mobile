@@ -1,13 +1,13 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-13:12
+ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
 MERGED from [:CordovaLib] C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\CordovaLib\build\intermediates\library_manifest\release\AndroidManifest.xml:20:1-27:12
-INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-13:12
+INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
+INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
 	package
 		ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:98-120
 		INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml
@@ -80,6 +80,10 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:9:17-77
 	android:name
 		ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:9:27-74
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:13:22-78
 uses-sdk
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml

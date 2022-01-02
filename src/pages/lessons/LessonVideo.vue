@@ -3,8 +3,9 @@
     <q-card class="my-card">
       <q-video :src="lesson.video_link" />
 
-      <q-card-section v-html="lesson.description" class="q-pt-none">
-
+      <q-card-section  class="q-pt-none">
+        <div v-html="lesson.description">
+          </div>
       </q-card-section>
     </q-card>
   </div>

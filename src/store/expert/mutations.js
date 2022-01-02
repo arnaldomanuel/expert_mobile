@@ -20,7 +20,10 @@
   const setUSerDummy= (state, user)=>{
   state.user=user
   }
+  const setAPIToken= (state, token)=>{
+    state.token=token
+  }
 
 export default {
-  SET_USER, SET_META, SET_LINKS, SET_LOADING, SET_ERROR, setUSerDummy
+  SET_USER, SET_META, SET_LINKS, SET_LOADING, SET_ERROR, setUSerDummy, setAPIToken
 }

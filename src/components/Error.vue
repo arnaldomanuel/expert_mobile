@@ -9,7 +9,7 @@
 import {Notify} from 'quasar'
 
 let notify = null
-let process = null
+var process = null
 export default {
 
   openNotify(message, timeout=0) {
@@ -27,6 +27,8 @@ export default {
       message: 'Por favor aguarde',
       timeout: timeout
     })
+
+    return process;
   },
   closeNotify(){
     notify()

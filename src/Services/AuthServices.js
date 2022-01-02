@@ -1,12 +1,14 @@
 import axios from "axios";
 import store from "../store/index";
 import settings from "boot/./settingsFile";
+import {api} from "boot/axios";
 
 
 export const authClient = axios.create({
   baseURL: settings.settings.API_URL,
-  withCredentials: true,
 });
+authClient.defaults.headers.common['Accept']='application/json'
+
 
 /*
  * Add a response interceptor
@@ -30,7 +32,7 @@ authClient.interceptors.response.use(
 
 export default {
   async login(payload) {
-    await authClient.get("/sanctum/csrf-cookie");
+    authClient.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
     return authClient.post("api/login", payload);
   },
   logout() {
@@ -41,6 +43,7 @@ export default {
     return authClient.post("/forgot-password", payload);
   },
   getAuthUser() {
+    authClient.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
     return authClient.get("/api/user");
   },
   async resetPassword(payload) {

@@ -14,7 +14,7 @@
 
           <q-item-section>{{ module.name }}</q-item-section>
           <q-item-section class="q-mr-md" thumbnail>
-            <q-icon class="q-mr-md" name="lock"/>
+            <q-icon class="q-mr-md" name="play_circle"/>
           </q-item-section>
         </q-item>
         <q-separator/>
@@ -41,6 +41,9 @@
         <q-separator/>
       </template>
     </q-list>
+    <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-btn type="a" :href="'https://wa.me/'+course.whatsapp_number" fab icon="whatsapp" color="accent" />
+    </q-page-sticky>
   </div>
 </template>
 
@@ -51,6 +54,7 @@ export default {
     return {
       modules: [],
       quizzes: [],
+      course:{whatsapp_number:""},
     }
   },
   methods: {
@@ -64,6 +68,7 @@ export default {
   mounted() {
     this.$axios.get('/api/course/' + this.$route.params.id).then(data => {
       this.modules = data.data.modules
+      this.course=data.data.course
       console.log(data)
     })
   }

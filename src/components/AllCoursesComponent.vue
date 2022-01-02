@@ -19,7 +19,7 @@ name: "AllCoursesComponent",
   },
   methods:{
     getCourses(){
-
+      this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
       this.$axios.get("/api/courses/").then(data=>{
         this.courses=data.data.courses
 

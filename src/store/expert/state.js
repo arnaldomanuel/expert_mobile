@@ -7,5 +7,6 @@ export default function () {
     loading:null,
     error:null,
     err:null,
+    token:null,
   }
 }

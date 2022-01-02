@@ -1,10 +1,21 @@
 <template>
   <div>
-    <!-- <iframe src="https://docs.google.com/gview?url=http://www.xmlpdf.com/manualfiles/hello-world.pdf&embedded=true"
-             style="width:100%; height:1000px;" frameborder="0">
+   <!-- <iframe :src="'https://docs.google.com/gview?url=https://expert.co.mz/'+'storage/pdf/DXw91638622732.pdf'+'&embedded=true'"
+            style="width:100%; height:100%;" frameborder="0">
 
-     </iframe>-->
-    <q-btn label="Baixar PDF" @click="downloadPDF"/>
+    </iframe>-->
+    <div v-if="lesson.pdf_link">
+      <iframe :src="'https://docs.google.com/gview?url=https://expert.co.mz/'+lesson.pdf_link+'&embedded=true'"
+              style="width:100%; height:100%;" frameborder="0">
+
+      </iframe>
+
+      <q-btn label="Baixar PDF" @click="downloadPDF"/>
+    </div>
+    <div class="text-h6 text-center" v-else>
+      Sem informação
+    </div>
+
 
   </div>
 </template>

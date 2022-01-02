@@ -25,6 +25,7 @@ export default {
      logout() {
        Error.openPrrocessing()
        this.$store.dispatch("expert/logout");
+       this.$router.push('/entrar')
        Error.closeprocessing()
      }
    },

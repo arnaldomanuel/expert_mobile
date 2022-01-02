@@ -6,6 +6,7 @@
 
       <q-card-section>
         <div class="text-h6">{{course.name}}</div>
+
         <div class="text-subtitle2">{{course.user.name}}</div>
       </q-card-section>
     </q-card>

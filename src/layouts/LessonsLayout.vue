@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lff" style="height: 900px" class="shadow-2 rounded-borders">
+  <q-layout view="lHh lpr lFf" class="shadow-2 rounded-borders">
 
     <q-header reveal elevated>
       <q-toolbar>
@@ -28,6 +28,7 @@ export default {
       drawer: true,
       miniState: true,
       confirm: false,
+      tab:"images"
     }
   },
   methods:{
@@ -44,6 +45,7 @@ export default {
     }
   },
   mounted() {
+    this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
     this.$store.dispatch('expert/getAuthUser')
   }
 

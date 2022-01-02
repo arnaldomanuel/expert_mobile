@@ -75,8 +75,10 @@ export default {
   },
   mounted() {
     console.log('live',this.$settings)
+    this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
     this.$axios.get('/api/last-viewed-course').then(data=>{
-      this.lastViewedCourse=data.data.lastViewedCourse
+      if(data.data.lastViewedCourse!=null || data.data.lastViewedCourse!=undefined)
+        this.lastViewedCourse=data.data.lastViewedCourse
       console.log(this.lastViewedCourse)
     })
   },

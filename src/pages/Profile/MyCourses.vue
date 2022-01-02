@@ -34,6 +34,7 @@ export default {
     }
   },
   mounted() {
+    this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
     this.$axios.get("/api/courses/").then(data=>{
       this.coursesStudent=data.data.courses
 
