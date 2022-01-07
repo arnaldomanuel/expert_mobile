@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div keep-alive>
    <!-- <iframe :src="'https://docs.google.com/gview?url=https://expert.co.mz/'+'storage/pdf/DXw91638622732.pdf'+'&embedded=true'"
             style="width:100%; height:100%;" frameborder="0">
 
     </iframe>-->
-    <div v-if="lesson.pdf_link">
+    <div :style="'height:'+getHeight+'px;'" v-if="lesson.pdf_link">
       <iframe :src="'https://docs.google.com/gview?url=https://expert.co.mz/'+lesson.pdf_link+'&embedded=true'"
               style="width:100%; height:100%;" frameborder="0">
 
       </iframe>
 
-      <q-btn label="Baixar PDF" @click="downloadPDF"/>
+     <!-- <q-btn label="Baixar PDF" @click="downloadPDF"/>-->
     </div>
     <div class="text-h6 text-center" v-else>
       Sem informação
@@ -21,9 +21,15 @@
 </template>
 
 <script>
+import { dom } from 'quasar'
 export default {
   name: "LessonPDF",
   props: ["lesson"],
+  computed:{
+      getHeight(){
+        return  screen.height - 340
+      }
+  },
   methods: {
     downloadPDF() {
       console.log('Im downloading')

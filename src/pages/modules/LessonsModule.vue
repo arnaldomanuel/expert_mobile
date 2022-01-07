@@ -6,7 +6,6 @@
           <q-item-label>{{lesson.name}}</q-item-label>
           <q-item-label v-html="lesson.description" caption></q-item-label>
         </q-item-section>
-
         <q-item-section clickable side top>
           <q-badge color="teal" label="1" />
         </q-item-section>

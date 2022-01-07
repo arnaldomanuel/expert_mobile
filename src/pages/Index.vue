@@ -27,30 +27,14 @@
         height="300px"
         class="bg-secondary text-white shadow-1 rounded-borders"
       >
-        <q-carousel-slide name="style" class="column no-wrap flex-center">
-          <q-icon name="style" size="56px" />
+        <q-carousel-slide v-for="banner in banners" :key="banner.id" :name="'banner'+banner.id" class="column no-wrap flex-center">
+          <q-icon :name="banner.icon" size="56px" />
           <div class="q-mt-md text-center">
-            {{ lorem }}
+            {{ banner.description }}
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="tv" class="column no-wrap flex-center">
-          <q-icon name="live_tv" size="56px" />
-          <div class="q-mt-md text-center">
-            {{ lorem }}
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide name="layers" class="column no-wrap flex-center">
-          <q-icon name="layers" size="56px" />
-          <div class="q-mt-md text-center">
-            {{ lorem }}
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide name="map" class="column no-wrap flex-center">
-          <q-icon name="terrain" size="56px" />
-          <div class="q-mt-md text-center">
-            {{ lorem }}
-          </div>
-        </q-carousel-slide>
+       
+       
       </q-carousel>
     </div>
     <all-courses-component/>
@@ -65,6 +49,7 @@ export default {
     return {
       slide:"tv",
       lastViewedCourse:{id:0, name:''},
+      banners:[],
       lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'
     }
   },
@@ -79,6 +64,10 @@ export default {
     this.$axios.get('/api/last-viewed-course').then(data=>{
       if(data.data.lastViewedCourse!=null || data.data.lastViewedCourse!=undefined)
         this.lastViewedCourse=data.data.lastViewedCourse
+        this.banners = data.data.banners;
+        if(this.banners.length>0){
+          this.slide ='banner'+ this.banner[0].id
+        }
       console.log(this.lastViewedCourse)
     })
   },

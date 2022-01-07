@@ -4,7 +4,7 @@ ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\m
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
-MERGED from [:CordovaLib] C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\CordovaLib\build\intermediates\library_manifest\release\AndroidManifest.xml:20:1-27:12
+MERGED from [:CordovaLib] C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\CordovaLib\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:1-27:12
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:2:1-14:12
@@ -54,7 +54,7 @@ ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\m
 		ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:5:53-87
 	android:usesCleartextTraffic
 		ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:5:148-183
-activity#com.expertmz.MainActivity
+activity#mz.co.expert.MainActivity
 ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:6:9-11:20
 	android:label
 		ADDED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml:6:136-173
@@ -88,8 +88,8 @@ uses-sdk
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml
-MERGED from [:CordovaLib] C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\CordovaLib\build\intermediates\library_manifest\release\AndroidManifest.xml:25:5-44
-MERGED from [:CordovaLib] C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\CordovaLib\build\intermediates\library_manifest\release\AndroidManifest.xml:25:5-44
+MERGED from [:CordovaLib] C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\CordovaLib\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:5-44
+MERGED from [:CordovaLib] C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\CordovaLib\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:5-44
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\xampp\htdocs\expert_mobile\src-cordova\platforms\android\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion

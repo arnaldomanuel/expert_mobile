@@ -4,8 +4,8 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.expertmz",
-  "variantName": "release",
+  "applicationId": "mz.co.expert",
+  "variantName": "debug",
   "elements": [
     {
       "type": "SINGLE",
@@ -14,7 +14,7 @@
       "versionCode": 1,
       "versionName": "1",
       "enabled": true,
-      "outputFile": "app-release-unsigned.apk"
+      "outputFile": "app-debug.apk"
     }
   ]
 }

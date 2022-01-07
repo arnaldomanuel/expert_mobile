@@ -1,17 +1,17 @@
 <template>
   <div class="q-pa-none q-ma-none">
     <q-card>
-      <q-tab-panels  v-model="tab" animated>
-        <q-tab-panel name="PDF">
-          <lesson-p-d-f :lesson="lesson"></lesson-p-d-f>
+      <q-tab-panels keep-alive  v-model="tab" animated>
+        <q-tab-panel keep-alive name="PDF">
+          <lesson-p-d-f keep-alive :lesson="lesson"></lesson-p-d-f>
         </q-tab-panel>
 
-        <q-tab-panel name="video">
-          <lesson-video :lesson="lesson"/>
+        <q-tab-panel keep-alive  name="video">
+          <lesson-video keep-alive :lesson="lesson"/>
         </q-tab-panel>
 
-        <q-tab-panel name="lessons">
-          <other-lessons :otherLessons="otherLessons"/>
+        <q-tab-panel keep-alive name="lessons">
+          <other-lessons keep-alive :otherLessons="otherLessons"/>
         </q-tab-panel>
       </q-tab-panels>
 
@@ -21,16 +21,17 @@
         <q-btn type="a" :href="'https://wa.me/'+course.whatsapp_number" fab icon="whatsapp" color="accent" />
       </q-page-sticky>
       <q-footer bordered class="bg-white text-primary">
-        <q-tabs
+        <q-tabs keep-alive
           v-model="tab"
           dense
           class="bg-grey-3"
           align="justify"
           narrow-indicator
+  
         >
-          <q-tab name="video" icon="smart_display" />
-          <q-tab name="PDF" icon="picture_as_pdf" />
-          <q-tab name="lessons" icon="play_lessons" />
+          <q-tab keep-alive  name="video" icon="smart_display" />
+          <q-tab keep-alive name="PDF" icon="picture_as_pdf" />
+          <q-tab keep-alive name="lessons" icon="play_lessons" />
         </q-tabs>
       </q-footer>
 
@@ -71,8 +72,10 @@ name: "Show",
     this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
     this.$axios.get('/api/aulas/'+this.$route.params.id).then(data=>{
       this.lesson=data.data.lesson
-      this.lesson=data.data.course
+      this.course=data.data.course
       this.otherLessons=data.data.suggestions
+
+      console.log('video ',this.lesson)
     }).catch(error=>{
       console.log(error.response.data.message)
       console.log(error)
