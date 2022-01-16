@@ -13,6 +13,13 @@
       <h4 class="text-overline q-pt-md text-uppercase q-ma-sm">Módulo</h4>
       <h1 class="text-h5 q-ma-sm  q-pb-md">{{module.name}}</h1>
     </div>
+     <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-fab color="primary" text-color="black" icon="keyboard_arrow_up" direction="up">
+        <q-btn type="a" :href="'https://translate.google.com/'" fab icon="g_translate" color="indigo-8" />
+        <q-btn type="a" :href="'https://wa.me/'+course.whatsapp_number" fab icon="whatsapp" color="accent" />
+      </q-fab>
+        
+      </q-page-sticky>
     <div class="col-12">
       <q-tabs
         v-model="tab"

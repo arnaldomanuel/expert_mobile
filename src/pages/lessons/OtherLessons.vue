@@ -3,7 +3,7 @@
     <div class="text-h6">Outras aulas</div>
 
     <div v-if="otherLessons.length<=0" class="bi-text-paragraph text-center q-mt-lg">Sem aulas por mostrar</div>
-    <lessons-module :lessons="otherLessons"/>
+    <lessons-module @change-lesson="reactToChangeLesson" :lessons="otherLessons"/>
   </div>
 </template>
 
@@ -16,6 +16,13 @@ export default {
   data(){
     return {
       lessons:[],
+
+    }
+  },
+  methods:{
+    reactToChangeLesson(id){
+      this.$emit('route-lesson', id)
+      console.log(id);
     }
   }
 }

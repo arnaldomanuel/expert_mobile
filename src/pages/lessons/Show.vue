@@ -11,14 +11,18 @@
         </q-tab-panel>
 
         <q-tab-panel keep-alive name="lessons">
-          <other-lessons keep-alive :otherLessons="otherLessons"/>
+          <other-lessons @route-lesson="changeCurrentLesson" keep-alive :otherLessons="otherLessons"/>
         </q-tab-panel>
       </q-tab-panels>
 
       <q-separator />
 
       <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-fab color="primary" text-color="black" icon="keyboard_arrow_up" direction="up">
+        <q-btn type="a" :href="'https://translate.google.com/'" fab icon="g_translate" color="indigo-8" />
         <q-btn type="a" :href="'https://wa.me/'+course.whatsapp_number" fab icon="whatsapp" color="accent" />
+      </q-fab>
+        
       </q-page-sticky>
       <q-footer bordered class="bg-white text-primary">
         <q-tabs keep-alive
@@ -59,6 +63,29 @@ name: "Show",
       tab:"video"
     }
   },
+  methods:{
+    changeCurrentLesson(id){
+      console.log('second react', id);
+      this.loadLesson(id)
+    },
+
+    loadLesson(id){
+      this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
+   
+   this.$axios.get('/api/aulas/'+(id?id:this.$route.params.id)).then(data=>{
+      this.lesson=data.data.lesson
+      this.course=data.data.course
+      this.otherLessons=data.data.suggestions
+      this.tab="video"
+      console.log('video ',this.lesson)
+    }).catch(error=>{
+      console.log(error.response.data.message)
+      console.log(error)
+      Error.openNotify(error.response.data.message, 5000)
+    })
+    }
+  },
+
   computed: {
     height(){
       return 'height: '+(screen.height-130)+"px;"
@@ -69,18 +96,7 @@ name: "Show",
     console.log(
       screen.height
     )
-    this.$axios.defaults.headers.common['Authorization']='Bearer '+window.localStorage.getItem('token')
-    this.$axios.get('/api/aulas/'+this.$route.params.id).then(data=>{
-      this.lesson=data.data.lesson
-      this.course=data.data.course
-      this.otherLessons=data.data.suggestions
-
-      console.log('video ',this.lesson)
-    }).catch(error=>{
-      console.log(error.response.data.message)
-      console.log(error)
-      Error.openNotify(error.response.data.message, 5000)
-    })
+    this.loadLesson(null)
   }
 }
 </script>

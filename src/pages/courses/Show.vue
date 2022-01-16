@@ -42,9 +42,14 @@
         </q-tab-panel>
       </q-tab-panels>
     </div>
-    <q-page-sticky position="bottom-right" :offset="[18, 18]">
-      <q-btn type="a" :href="'https://wa.me/'+course.whatsapp_number" fab icon="whatsapp" color="accent" />
-    </q-page-sticky>
+     <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-fab color="primary" text-color="black" icon="keyboard_arrow_up" direction="up">
+        <q-btn type="a" :href="'https://translate.google.com/'" fab icon="g_translate" color="indigo-8" />
+        <q-btn type="a" :href="'https://wa.me/'+course.whatsapp_number" fab icon="whatsapp" color="accent" />
+      </q-fab>
+        
+      </q-page-sticky>
+   
   </div>
 </template>
 
